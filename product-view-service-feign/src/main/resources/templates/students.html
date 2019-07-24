@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>students</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+            <th>座右铭</th>
+            <th>学历</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="s: ${students}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.name}"></td>
+            <td th:text="${s.age}"></td>
+            <td th:text="${s.sex}"></td>
+            <td th:text="${s.motto}"></td>
+            <td th:text="${s.education}"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <p th:text="${version}" >...</p>
+                <p th:text="${author}" >...</p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a href="http://localhost:8012/actuator/bus-refresh">刷新a</a>
+<button onclick="freshConfig()">刷新远程Config配置文件</button>
+<button onclick="freshConfig1()">直接链接形式post刷新远程Config配置文件</button>
+
+<script>
+    function freshConfig1(){
+        $.ajax({
+            url: "http://localhost:8012/actuator/bus-refresh",
+            // url: "/fresh/freshConfig",
+            beforeSend: function(xhr) {
+                xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            },
+            type: "post",
+            success: function (data) {
+                alert(data);
+            }
+        })
+    }
+
+    function freshConfig(){
+        $.ajax({
+            url: "/fresh/freshConfig",
+            // url: "/fresh/freshConfig",
+            // beforeSend: function(xhr) {
+            //     xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+            // },
+            type: "post",
+            success: function (data) {
+                if(data==1){
+                    alert("更新成功,自动刷新页面.");
+                    window.location.reload();
+                }else{
+                    alert("更新失败,请稍后再试.")
+                }
+
+            }
+        })
+    }
+</script>
+
+</body>
+</html>
