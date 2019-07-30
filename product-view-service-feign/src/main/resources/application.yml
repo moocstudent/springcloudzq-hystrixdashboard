@@ -11,6 +11,7 @@ spring:
   zipkin:
     base-url: http://localhost:9411
 
+
 management:
   endpoints:
     web:
@@ -19,3 +20,7 @@ management:
       cors:
         allowed-origins: "*"
         allowed-methods: "*"
+
+feign:
+  hystrix:
+    enabled: true

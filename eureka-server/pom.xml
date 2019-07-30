@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ykmimi</groupId>
-        <artifactId>springcloud-bus</artifactId>
+        <artifactId>springcloudzq-hystrixdashboard</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>eureka-server</artifactId>

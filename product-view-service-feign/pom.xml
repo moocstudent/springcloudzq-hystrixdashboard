@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.ykmimi</groupId>
-        <artifactId>springcloud-bus</artifactId>
+        <artifactId>springcloudzq-hystrixdashboard</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <artifactId>product-view-service-feign</artifactId>
@@ -46,6 +46,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bus-amqp</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.ykmimi</groupId>
             <artifactId>utils-boot</artifactId>
